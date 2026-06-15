@@ -74,7 +74,7 @@ INSERT INTO Bookings (booking_id, user_id, match_id, seat_number, payment_status
 -- Query: 1
 select match_id, fixture, base_ticket_price from matches
  where tournament_category = 'Champions League'
- and match_status = 'Available'
+ and match_status = 'Available';
 
 -- Query: 2
 select user_id, full_name, email 
@@ -102,10 +102,10 @@ left join bookings b on u.user_id = b.user_id;
 -- Query: 6
 select booking_id, match_id, total_cost
 from bookings
-where total_cost > (select avg(total_cost) from bookings)
+where total_cost > (select avg(total_cost) from bookings);
 
 -- Query: 7
 select match_id, fixture, base_ticket_price
 from matches
 order by base_ticket_price desc 
-offset 1 limit 2
+offset 1 limit 2;
