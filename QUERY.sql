@@ -93,3 +93,19 @@ select b.booking_id, u.full_name, m.fixture, b.total_cost
 from bookings b
 inner join users u on b.user_id = u.user_id 
 inner join matches m on b.match_id = m.match_id;
+
+-- Query: 5
+select u.user_id, u.full_name, b.booking_id
+from users u
+left join bookings b on u.user_id = b.user_id;
+
+-- Query: 6
+select booking_id, match_id, total_cost
+from bookings
+where total_cost > (select avg(total_cost) from bookings)
+
+-- Query: 7
+select match_id, fixture, base_ticket_price
+from matches
+order by base_ticket_price desc 
+offset 1 limit 2
